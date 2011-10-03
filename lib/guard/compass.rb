@@ -7,12 +7,24 @@ require 'guard/compass_helper'
 require 'compass'
 require 'compass/commands'
 require 'compass/logger'
+require 'compass/compiler'
+
+module Compass
+  class Compiler
+    alias :old_handle_exception :handle_exception
+    def handle_exception(sass_filename, css_filename, e)
+      old_handle_exception(sass_filename, css_filename, e)
+      # rethrow the exception, we need it to notificate the user!
+      raise Sass::SyntaxError, "[#{File.basename(sass_filename)}:#{e.sass_line}] #{e.message}"
+    end
+  end
+end
 
 module Guard
   class Compass < Guard
     attr_reader :updater, :working_path
     attr_accessor :reporter
-    
+
     def initialize(watchers = [], options = {})
       super
       @reporter = Reporter.new
@@ -103,8 +115,15 @@ module Guard
 
       def perform
         if valid_sass_path?
-          @updater.execute
-          true
+          begin
+            @updater.execute
+            Notifier.notify("No errors.", :title => "Compass")
+            true
+          rescue Sass::SyntaxError => e
+            Notifier.notify(e.message, :image => :failed, :title => "Compass")
+            reporter.failure "#{e.message}"
+            false
+          end
         else
           false
         end
@@ -116,5 +135,6 @@ module Guard
         create_watchers
         valid_sass_path?
       end
+
   end
 end
