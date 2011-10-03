@@ -64,7 +64,7 @@ module Guard
     # Compile all the sass|scss stylesheets
     def start
       create_updater
-      reporter.announce "Guard::Compass is watching at your stylesheets."
+      reporter.announce "Guard::Compass is waiting to compile your stylesheets."
       true
     end
 
