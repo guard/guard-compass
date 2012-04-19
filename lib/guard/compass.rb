@@ -103,7 +103,16 @@ module Guard
 
       def perform
         if valid_sass_path?
-          @updater.execute
+          begin
+            @updater.execute
+          rescue Sass::SyntaxError => e
+            msg = "#{e.sass_backtrace_str}"
+            ::Guard::Notifier.notify msg, :title => "Guard Compass", :image => :failed
+            return false
+          rescue Exception => e
+            ::Guard::Notifier.notify e.to_s, :title => "Guard Compass", :image => :failed
+            return false
+          end
           true
         else
           false
