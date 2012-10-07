@@ -64,7 +64,12 @@ module Guard
     # Compile all the sass|scss stylesheets
     def start
       create_updater
-      reporter.announce "Guard::Compass is waiting to compile your stylesheets."
+      if (options[:compile_on_start])
+        reporter.announce "Guard::Compass is going to compile your stylesheets."
+        perform
+      else
+        reporter.announce "Guard::Compass is waiting to compile your stylesheets."
+      end
       true
     end
 
