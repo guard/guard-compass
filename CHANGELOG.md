@@ -1,10 +1,12 @@
 ## Unreleased Changes
 
+[Full Changelog](https://github.com/guard/guard-compass/compare/v0.0.8...master)
+
 No changes.
 
-## 0.0.8 - Jul 12, 2013
+## 0.0.8 - Jul 11, 2013
 
-### Bug fix
+### Bug fixes
 
 * [#11][] New `:compile_on_start` option to compile stylesheets when Guard is started. ([@mhayes][])
 * [#7][] Fix crash on Sass syntax failure by displaying Growl notification instead. ([@bradphelan][])
