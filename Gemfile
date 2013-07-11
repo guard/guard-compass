@@ -6,6 +6,7 @@ gem 'rake'
 
 group :development do
   gem 'ruby_gntp'
+  gem 'guard-rspec'
   gem 'pimpmychangelog'
 end
 
@@ -13,6 +14,5 @@ end
 # installed on Travis CI
 #
 group :test do
-  gem 'guard-rspec'
   gem 'coveralls', :require => false
 end
