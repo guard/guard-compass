@@ -76,7 +76,12 @@ module Guard
     # Compile all the sass|scss stylesheets
     def start
       create_updater
-      reporter.announce "Guard::Compass is waiting to compile your stylesheets."
+      if (options[:compile_on_start])
+        reporter.announce "Guard::Compass is going to compile your stylesheets."
+        perform
+      else
+        reporter.announce "Guard::Compass is waiting to compile your stylesheets."
+      end
       true
     end
 
@@ -116,13 +121,15 @@ module Guard
         if valid_sass_path?
           begin
             @updater.execute
-            Notifier.notify("No errors.", :title => "Compass")
-            true
           rescue Sass::SyntaxError => e
-            Notifier.notify(e.message, :image => :failed, :title => "Compass")
-            reporter.failure "#{e.message}"
-            false
+            msg = "#{e.sass_backtrace_str}"
+            ::Guard::Notifier.notify msg, :title => "Guard Compass", :image => :failed
+            return false
+          rescue Exception => e
+            ::Guard::Notifier.notify e.to_s, :title => "Guard Compass", :image => :failed
+            return false
           end
+          true
         else
           false
         end
