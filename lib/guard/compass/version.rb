@@ -1,5 +1,5 @@
 module Guard
   module CompassVersion
-    VERSION = '1.0.0'
+    VERSION = '0.0.8'
   end
 end
