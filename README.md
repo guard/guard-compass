@@ -11,7 +11,7 @@ whenever a stylesheet file is modified.
 
 Please be sure to have [Guard](http://github.com/guard/guard) installed before continue.
 
-The simplest way to install Guard::Minitest is to use [Bundler](http://gembundler.com/).
+The simplest way to install Guard::Compass is to use [Bundler](http://gembundler.com/).
 
 Add Guard::Compass to your `Gemfile`:
 
