@@ -51,35 +51,37 @@ module Guard
     end
 
     def valid_sass_path?
-      if(::Compass.configuration.sass_dir.nil?)
+      if ::Compass.configuration.sass_dir.nil?
         reporter.failure("Sass files src directory not set.\nPlease check your Compass configuration.")
         return false
       end
+
       path = pathname(root_path, ::Compass.configuration.sass_dir )
+
       unless path.exist?
         reporter.failure("Sass files src directory not found: #{path}\nPlease check your Compass configuration.")
-        return false
+        false
       else
-        return true
+        true
       end
     end
 
     def valid_configuration_path?
       config_file = (options[:configuration_file] || ::Compass.detect_configuration_file(root_path))
 
-      if(config_file.nil?)
+      if config_file.nil?
         reporter.failure "Cannot find a Compass configuration file, please add information to your Guardfile guard 'compass' declaration."
         return false
       end
 
       config_path = pathname(working_path, config_file)
 
-      unless(config_path.exist?)
+      if config_path.exist?
+        true
+      else
         reporter.failure "Compass configuration file not found: #{config_path}\nPlease check Guard configuration."
-        return false
+        false
       end
-
-      return true
     end
 
     # Guard Interface Implementation
@@ -87,7 +89,7 @@ module Guard
     # Compile all the sass|scss stylesheets
     def start
       create_updater
-      if (options[:compile_on_start])
+      if options[:compile_on_start]
         reporter.announce "Guard::Compass is going to compile your stylesheets."
         perform
       else
