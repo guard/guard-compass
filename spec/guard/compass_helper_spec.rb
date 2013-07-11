@@ -1,4 +1,6 @@
 require 'spec_helper'
+require 'guard'
+require 'guard/compass_helper'
 
 describe Guard::CompassHelper do
 

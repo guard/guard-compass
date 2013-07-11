@@ -1,4 +1,4 @@
-require 'spec_helper'
+ENV['GUARD_ENV'] = 'test'
 require 'guard/compass'
 
 FIXTURES_PATH = Pathname.new(File.expand_path('../fixtures/', __FILE__))
@@ -9,8 +9,6 @@ RSpec.configure do |config|
   config.color_enabled = true
   config.filter_run :focus => true
   config.run_all_when_everything_filtered = true
-  
-  config.before(:each) do
-    ENV["GUARD_ENV"] = 'test'
-  end
+
+  $LOAD_PATH << LIB_PATH
 end

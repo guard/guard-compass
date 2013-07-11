@@ -1,5 +1,5 @@
 module Guard
   module CompassVersion
-    VERSION = '0.0.7' unless defined? Guard::CompassVersion::VERSION
+    VERSION = '0.0.8'
   end
 end

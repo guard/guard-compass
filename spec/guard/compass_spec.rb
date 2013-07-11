@@ -263,12 +263,10 @@ describe Guard::Compass do
 
         @guard.start
 
-        Pathname.new(@guard.options[:project_path]).realpath.to_s.should eq File.expand_path("#{@project_dir}/..")
-
         @guard.options[:project_path].should eq ".."
         @guard.options[:configuration_file].should eq "#{@project_path}/another_config_location/config.rb"
 
-        @guard.watchers.size.should(eql(2), @guard.watchers.inspect)
+        @guard.watchers.size.should eq(2), @guard.watchers.inspect
         @guard.watchers.last.pattern.should eq %r{^another_config_location/config.rb$}
         @guard.watchers.first.pattern.should eq(%r{^another_src_location/.*}), ::Compass.configuration.sass_dir
       end
