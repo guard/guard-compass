@@ -1,3 +1,10 @@
+require 'rubygems'
+
+if ENV['CI']
+  require 'coveralls'
+  Coveralls.wear!
+end
+
 ENV['GUARD_ENV'] = 'test'
 require 'guard/compass'
 
