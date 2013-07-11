@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'guard/compass'
 
 FIXTURES_PATH = Pathname.new(File.expand_path('../fixtures/', __FILE__))
 LIB_PATH = Pathname.new(File.expand_path('../../lib/', __FILE__))

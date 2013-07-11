@@ -40,14 +40,14 @@ module Guard
 
       config_file = (options[:configuration_file] || ::Compass.detect_configuration_file(root_path))
 
-      if(config_file.nil?)
+      if config_file.nil?
         reporter.failure "Cannot find a Compass configuration file, please add information to your Guardfile guard 'compass' declaration."
         return false
       end
 
       config_path = pathname(working_path, config_file)
 
-      unless(config_path.exist?)
+      unless config_path.exist?
         reporter.failure "Compass configuration file not found: #{config_path}\nPlease check Guard configuration."
         return false
       end
@@ -106,9 +106,8 @@ module Guard
 
       # Cleanup of the given options
       def cleanup_options
-
         # Ensure configuration file make reference to an absolute path.
-        if(options[:configuration_file])
+        if options[:configuration_file]
           options[:configuration_file] = pathname(working_path, options[:configuration_file]).to_s
         end
       end
