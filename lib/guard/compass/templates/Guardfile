@@ -6,7 +6,7 @@
 #
 # Available options:
 #
-# * :workging_directory => Define the Compass working directory, relative to the Guardfile directory
+# * :working_directory => Define the Compass working directory, relative to the Guardfile directory
 # * :configuration_file => Path to the Compass configuration file, relative to :project_path
 #
 # Like usual, the Compass configuration path are relative to the :project_path
