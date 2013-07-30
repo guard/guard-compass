@@ -3,6 +3,7 @@ require 'guard/guard'
 require 'guard/watcher'
 require 'guard/reporter'
 require 'guard/compass_helper'
+require 'compass-rails'
 
 require 'compass'
 require 'compass/commands'
