@@ -136,10 +136,10 @@ module Guard
             @updater.execute
           rescue Sass::SyntaxError => e
             msg = "#{e.sass_backtrace_str}"
-            ::Guard::Notifier.notify msg, :title => "Guard Compass", :image => :failed
+            ::Guard::Notifier.notify msg, title: "Guard Compass", image: :failed
             return false
           rescue Exception => e
-            ::Guard::Notifier.notify e.to_s, :title => "Guard Compass", :image => :failed
+            ::Guard::Notifier.notify e.to_s, title: "Guard Compass", image: :failed
             return false
           end
           true

@@ -38,8 +38,8 @@ guard init compass
 Please read [Guard usage doc](http://github.com/guard/guard#readme)
 
 ```ruby
-guard :compass, :configuration_file => 'config/compass_config.rb', :project_path => 'public', 
-      :compile_on_start => true do
+guard :compass, configuration_file: 'config/compass_config.rb', project_path: 'public',
+      compile_on_start: true do
   watch(%r{..\/foo\/bar\/sass\/.*\.sass$})
 end
 ```
@@ -57,9 +57,9 @@ guard :compass
 ### List of available options
 
 ```ruby
-:project_path => 'public'                          # path to the compass project directory (from guard working directory)
-:configuration_file => 'config/compass_config.rb'  # path to your compass configuration file (from guard working directory)
-:compile_on_start => true                          # compile stylesheets when guard starts
+project_path: 'public'                          # path to the compass project directory (from guard working directory)
+configuration_file: 'config/compass_config.rb'  # path to your compass configuration file (from guard working directory)
+compile_on_start: true                          # compile stylesheets when guard starts
 ```
 
 By default, the project path is equal to the guard working directory (the folder from where you start Guard).

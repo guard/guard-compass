@@ -6,10 +6,10 @@
 #
 # Available options:
 #
-# * :working_directory => Define the Compass working directory, relative to the Guardfile directory
-# * :configuration_file => Path to the Compass configuration file, relative to :project_path
+# * working_directory: Define the Compass working directory, relative to the Guardfile directory
+# * configuration_file: Path to the Compass configuration file, relative to :project_path
 #
 # Like usual, the Compass configuration path are relative to the :project_path
 
-# guard 'compass', :project_path => 'not_current_dir', :configuration_file => 'path/to/my/compass_config.rb'
+# guard 'compass', project_path: 'not_current_dir', configuration_file: 'path/to/my/compass_config.rb'
 guard :compass
