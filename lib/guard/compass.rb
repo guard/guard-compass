@@ -1,5 +1,5 @@
 require 'guard'
-require 'guard/guard'
+require 'guard/plugin'
 require 'guard/watcher'
 require 'guard/reporter'
 require 'guard/compass_helper'
@@ -21,11 +21,11 @@ module Compass
 end
 
 module Guard
-  class Compass < Guard
+  class Compass < Plugin
     attr_reader :updater, :working_path
     attr_accessor :reporter
 
-    def initialize(watchers = [], options = {})
+    def initialize(options = {})
       super
       @reporter = Reporter.new
       @working_path = Pathname.pwd # the Guard base path is the current working_path
