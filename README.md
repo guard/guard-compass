@@ -87,8 +87,12 @@ For questions please join us in our [Google group](http://groups.google.com/grou
 
 ## Maintainer
 
-[Rémy Coutable](https://github.com/rymai) ([@rymai](http://twitter.com/rymai), [rymai.me](http://rymai.me))
+[Rémy Coutable](https://github.com/rymai) ([@rymai](http://twitter.com/rymai), [rym.ai](http://rym.ai))
 
 ## Author
 
 [Olivier Amblet](https://github.com/oliamb)
+
+## Contributors
+
+[https://github.com/guard/guard-compass/contributors](https://github.com/guard/guard-compass/contributors)
