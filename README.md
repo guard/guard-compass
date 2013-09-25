@@ -5,6 +5,7 @@
 Guard::Compass allows to automatically run [Compass](https://github.com/chriseppstein/compass)
 whenever a stylesheet file is modified.
 
+* Compatible with Compass >= 0.10.5.
 * Tested against Ruby 1.9.3, 2.0.0, Rubinius & JRuby (1.9 mode only).
 
 ## Install
