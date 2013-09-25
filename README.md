@@ -5,7 +5,7 @@
 Guard::Compass allows to automatically run [Compass](https://github.com/chriseppstein/compass)
 whenever a stylesheet file is modified.
 
-* Tested against Ruby 1.8.7, 1.9.3, 2.0.0, JRuby (1.8 mode & 1.9 mode) & Rubinius (1.8 mode & 1.9 mode).
+* Tested against Ruby 1.9.3, 2.0.0, Rubinius & JRuby (1.9 mode only).
 
 ## Install
 
@@ -30,7 +30,7 @@ $ bundle
 Add guard definition to your Guardfile by running the following command:
 
 ```bash
-guard init compass
+$ guard init compass
 ```
 
 ## Usage
@@ -95,4 +95,4 @@ For questions please join us in our [Google group](http://groups.google.com/grou
 
 ## Contributors
 
-[https://github.com/guard/guard-compass/contributors](https://github.com/guard/guard-compass/contributors)
+[https://github.com/guard/guard-compass/graphs/contributors](https://github.com/guard/guard-compass/graphs/contributors)
