@@ -5,7 +5,8 @@
 Guard::Compass allows to automatically run [Compass](https://github.com/chriseppstein/compass)
 whenever a stylesheet file is modified.
 
-* Tested against Ruby 1.8.7, 1.9.3, 2.0.0, JRuby (1.8 mode & 1.9 mode) & Rubinius (1.8 mode & 1.9 mode).
+* Compatible with Compass >= 0.10.5.
+* Tested against Ruby 1.9.3, 2.0.0, Rubinius & JRuby (1.9 mode only).
 
 ## Install
 
@@ -30,7 +31,7 @@ $ bundle
 Add guard definition to your Guardfile by running the following command:
 
 ```bash
-guard init compass
+$ guard init compass
 ```
 
 ## Usage
@@ -38,8 +39,8 @@ guard init compass
 Please read [Guard usage doc](http://github.com/guard/guard#readme)
 
 ```ruby
-guard :compass, :configuration_file => 'config/compass_config.rb', :project_path => 'public', 
-      :compile_on_start => true do
+guard :compass, configuration_file: 'config/compass_config.rb', project_path: 'public',
+      compile_on_start: true do
   watch(%r{..\/foo\/bar\/sass\/.*\.sass$})
 end
 ```
@@ -57,9 +58,9 @@ guard :compass
 ### List of available options
 
 ```ruby
-:project_path => 'public'                          # path to the compass project directory (from guard working directory)
-:configuration_file => 'config/compass_config.rb'  # path to your compass configuration file (from guard working directory)
-:compile_on_start => true                          # compile stylesheets when guard starts
+project_path: 'public'                          # path to the compass project directory (from guard working directory)
+configuration_file: 'config/compass_config.rb'  # path to your compass configuration file (from guard working directory)
+compile_on_start: true                          # compile stylesheets when guard starts
 ```
 
 By default, the project path is equal to the guard working directory (the folder from where you start Guard).
@@ -95,4 +96,4 @@ For questions please join us in our [Google group](http://groups.google.com/grou
 
 ## Contributors
 
-[https://github.com/guard/guard-compass/contributors](https://github.com/guard/guard-compass/contributors)
+[https://github.com/guard/guard-compass/graphs/contributors](https://github.com/guard/guard-compass/graphs/contributors)

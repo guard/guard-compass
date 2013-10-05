@@ -35,9 +35,9 @@ module Guard
 
     def new_compiler_instance(working_path)
       compiler_opts = ::Compass.sass_engine_options
-      compiler_opts.merge!(:quiet => options[:quiet],
-                           :force => options[:force],
-                           :dry_run => options[:dry_run])
+      compiler_opts.merge!(quiet: options[:quiet],
+                           force: options[:force],
+                           dry_run: options[:dry_run])
       ::Compass::Compiler.new(working_path,
         ::Compass.configuration.sass_path,
         ::Compass.configuration.css_path,
