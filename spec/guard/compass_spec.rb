@@ -23,7 +23,7 @@ describe Guard::Compass do
     end
 
     it "might be initialized with options" do
-      g = Guard::Compass.new([], :project_path => 'test', :configuration_file => 'test_also')
+      g = Guard::Compass.new(project_path: 'test', configuration_file: 'test_also')
       g.options[:project_path].should eq 'test'
       g.options[:configuration_file].should eq 'test_also'
     end
@@ -188,7 +188,7 @@ describe Guard::Compass do
   describe "with a bad configuration file parameter" do
     before do
       create_fixture(:custom_config_file)
-      @guard = Guard::Compass.new([], :configuration_file => 'invalid.rb')
+      @guard = Guard::Compass.new(configuration_file: 'invalid.rb')
     end
 
     after do
@@ -229,7 +229,7 @@ describe Guard::Compass do
     describe "in customized project" do
       before do
         create_fixture :custom_config_file
-        @guard = Guard::Compass.new([], :project_path => "#{TMP_PATH}/custom_config_file", :configuration_file => 'another_config_location/config.rb')
+        @guard = Guard::Compass.new(project_path: "#{TMP_PATH}/custom_config_file", configuration_file: 'another_config_location/config.rb')
       end
 
       after do
@@ -248,7 +248,7 @@ describe Guard::Compass do
     describe "with relative return in working_directory" do
       before do
         create_fixture :custom_config_file_2
-        @guard = Guard::Compass.new([], :project_path => "..", :configuration_file => 'another_config_location/config.rb')
+        @guard = Guard::Compass.new(project_path: "..", configuration_file: 'another_config_location/config.rb')
       end
 
       after do
