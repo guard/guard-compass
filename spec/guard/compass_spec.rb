@@ -271,6 +271,35 @@ describe Guard::Compass do
         @guard.watchers.first.pattern.should eq(%r{^another_src_location/.*}), ::Compass.configuration.sass_dir
       end
     end
+
+    describe "with additional_import_paths" do
+      before do
+        create_fixture :additional_import_paths
+        @guard = Guard::Compass.new(project_path: ".", configuration_file: 'another_config_location/config.rb')
+      end
+
+      after do
+        remove_fixtures
+        ::Compass.reset_configuration!
+      end
+
+      it "should have some watchers" do
+        @guard.reporter.should_not_receive(:failure)
+        @guard.options[:project_path].should eq "."
+        @guard.options[:configuration_file].should eq 'another_config_location/config.rb'
+
+        @guard.start
+
+        @guard.options[:project_path].should eq "."
+        @guard.options[:configuration_file].should eq "#{@project_path}/another_config_location/config.rb"
+
+        @guard.watchers.size.should eq(4), @guard.watchers.inspect
+        @guard.watchers[0].pattern.should eq(%r{^another_src_location/.*}), ::Compass.configuration.sass_dir
+        @guard.watchers[1].pattern.should eq %r{^another_config_location/config.rb$}
+        @guard.watchers[2].pattern.should eq %r{^another_src_location_1/.*}
+        @guard.watchers[3].pattern.should eq %r{^another_src_location_2/.*}
+      end
+    end
   end
 end
 
