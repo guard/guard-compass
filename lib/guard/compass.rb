@@ -44,6 +44,10 @@ module Guard
 
       watchers.push Watcher.new(%r{^#{src_path.relative_path_from(working_path)}/.*})
       watchers.push Watcher.new(%r{^#{config_path.relative_path_from(working_path)}$})
+
+      Array(::Compass.configuration.additional_import_paths).each do |additional_path|
+        watchers.push Watcher.new(%r{^#{pathname(additional_path).relative_path_from(working_path)}/.*})
+      end
     end
 
     def root_path
