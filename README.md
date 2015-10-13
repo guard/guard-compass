@@ -1,12 +1,12 @@
 # Guard::Compass
 
-[![Gem Version](https://badge.fury.io/rb/guard-compass.png)](http://badge.fury.io/rb/guard-compass) [![Build Status](https://travis-ci.org/guard/guard-compass.png?branch=master)](https://travis-ci.org/guard/guard-compass) [![Dependency Status](https://gemnasium.com/guard/guard-compass.png)](https://gemnasium.com/guard/guard-compass) [![Code Climate](https://codeclimate.com/github/guard/guard-compass.png)](https://codeclimate.com/github/guard/guard-compass) [![Coverage Status](https://coveralls.io/repos/guard/guard-compass/badge.png?branch=master)](https://coveralls.io/r/guard/guard-compass)
+[![Gem Version](https://img.shields.io/gem/v/guard-compass.svg?style=flat)](https://rubygems.org/gems/guard-compass) [![Build Status](https://travis-ci.org/guard/guard-compass.png?branch=master)](https://travis-ci.org/guard/guard-compass) [![Dependency Status](https://gemnasium.com/guard/guard-compass.png)](https://gemnasium.com/guard/guard-compass) [![Code Climate](https://codeclimate.com/github/guard/guard-compass.png)](https://codeclimate.com/github/guard/guard-compass) [![Test Coverage](https://codeclimate.com/github/guard/guard-compass/badges/coverage.svg)](https://codeclimate.com/github/guard/guard-compass)
 
 Guard::Compass allows to automatically run [Compass](https://github.com/chriseppstein/compass)
 whenever a stylesheet file is modified.
 
 * Compatible with Compass >= 0.10.5.
-* Tested against Ruby 1.9.3, 2.0.0, Rubinius & JRuby (1.9 mode only).
+* Tested against Ruby 2.0, 2.1, 2.2, Rubinius & JRuby (1.9 mode only).
 
 ## Install
 
