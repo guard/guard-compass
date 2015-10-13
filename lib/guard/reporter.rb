@@ -4,16 +4,16 @@ module Guard
   # it is currently subject to change.
   class Reporter
     def success(message)
-      UI.info(message)
+      Guard::Compat::UI.info(message)
     end
     def failure(message)
-      UI.error(message)
+      Guard::Compat::UI.error(message)
     end
     def unstable(message)
-      UI.info(message)
+      Guard::Compat::UI.info(message)
     end
     def announce(message)
-      UI.info(message)
+      Guard::Compat::UI.info(message)
     end
   end
 end

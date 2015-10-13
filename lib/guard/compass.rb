@@ -1,5 +1,5 @@
-require 'guard'
-require 'guard/plugin'
+require "guard/compat/plugin"
+
 require 'guard/watcher'
 require 'guard/reporter'
 require 'guard/compass_helper'
@@ -36,6 +36,8 @@ module Guard
       # root_path is the path to the compass project
       # working_path is the current Guard (and by extension Compass) working directory
 
+      # FIXME: watchers doesn't exist in the tests since initialize
+      # is stubbed in guard/compat/test/helper...
       watchers.clear
 
       config_file = (options[:configuration_file] || ::Compass.detect_configuration_file(root_path))
@@ -140,10 +142,10 @@ module Guard
             @updater.execute
           rescue Sass::SyntaxError => e
             msg = "#{e.sass_backtrace_str}"
-            ::Guard::Notifier.notify msg, title: "Guard Compass", image: :failed
+            Guard::Compat::UI.notify msg, title: "Guard Compass", image: :failed
             return false
           rescue Exception => e
-            ::Guard::Notifier.notify e.to_s, title: "Guard Compass", image: :failed
+            Guard::Compat::UI.notify e.to_s, title: "Guard Compass", image: :failed
             return false
           end
           true

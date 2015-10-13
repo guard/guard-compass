@@ -1,5 +1,8 @@
-require 'fileutils'
-require 'spec_helper'
+require "guard/compat/test/helper"
+require "guard/compass"
+
+require "fileutils"
+require "spec_helper"
 
 describe Guard::Compass do
 
@@ -31,12 +34,12 @@ describe Guard::Compass do
     describe "start" do
       it "supports creation of the updater instance" do
         @guard.updater.should be_nil
-        @guard.start.should be_true
+        @guard.start.should be true
         @guard.updater.should_not be_nil
       end
 
       it "should not generate anything" do
-        File.exists?(@project_dir + "/stylesheets/screen.css").should be_false
+        File.exists?(@project_dir + "/stylesheets/screen.css").should be false
       end
     end
 
@@ -44,7 +47,7 @@ describe Guard::Compass do
       it "should have a default path mathching the run location" do
         @guard.root_path.should == @project_path
         @guard.working_path.should == @project_path
-        @guard.start.should be_true
+        @guard.start.should be true
       end
     end
 
@@ -68,26 +71,26 @@ describe Guard::Compass do
       describe "stop" do
         it "Stop remove the updater" do
           @guard.updater.should_not be_nil
-          @guard.stop.should be_true
+          @guard.stop.should be true
           @guard.updater.should be_nil
         end
       end
 
       describe "run_on_change" do
         it "rebuilds all scss files in compass path" do
-          File.exists?(@project_dir + "/src/screen.scss").should(be_true)
-          File.exists?(@project_dir + "/stylesheets/screen.css").should be_false
-          @guard.run_on_change(@project_dir + "/src/screen.scss").should(be_true) rescue raise inspect_configuration
-          File.exists?(@project_dir + "/stylesheets/screen.css").should be_true
+          File.exists?(@project_dir + "/src/screen.scss").should(be true)
+          File.exists?(@project_dir + "/stylesheets/screen.css").should be false
+          @guard.run_on_change(@project_dir + "/src/screen.scss").should(be true) rescue raise inspect_configuration
+          File.exists?(@project_dir + "/stylesheets/screen.css").should be true
         end
       end
 
       describe "run all" do
         it "rebuilds all scss files in compass path" do
-          File.exists?(@project_dir + "/src/screen.scss").should(be_true)
-          File.exists?(@project_dir + "/stylesheets/screen.css").should be_false
-          @guard.run_all.should be_true
-          File.exists?(@project_dir + "/stylesheets/screen.css").should be_true
+          File.exists?(@project_dir + "/src/screen.scss").should(be true)
+          File.exists?(@project_dir + "/stylesheets/screen.css").should be false
+          @guard.run_all.should be true
+          File.exists?(@project_dir + "/stylesheets/screen.css").should be true
         end
       end
 
@@ -132,10 +135,10 @@ describe Guard::Compass do
     it "rebuilds all scss files in compass path" do
       @guard.options[:configuration_file] = "#{@project_dir}/another_config_location/config.rb"
       @guard.start
-      File.exists?("#{@project_dir}/another_src_location/screen.scss").should(be_true)
-      File.exists?("#{@project_dir}/another_stylesheets_location/screen.css").should be_false
-      @guard.run_on_change(@project_dir + "/another_src_location/screen.scss").should be_true
-      File.exists?(@project_dir + "/another_stylesheets_location/screen.css").should be_true
+      File.exists?("#{@project_dir}/another_src_location/screen.scss").should(be true)
+      File.exists?("#{@project_dir}/another_stylesheets_location/screen.css").should be false
+      @guard.run_on_change(@project_dir + "/another_src_location/screen.scss").should be true
+      File.exists?(@project_dir + "/another_stylesheets_location/screen.css").should be true
     end
   end
 
@@ -156,8 +159,8 @@ describe Guard::Compass do
     it "fails to build sass" do
       @guard.reporter.should_receive(:failure).with("Cannot find a Compass configuration file, please add information to your Guardfile guard 'compass' declaration.")
       @guard.start
-      File.exists?(@project_dir + "/src/screen.scss").should(be_true)
-      File.exists?(@project_dir + "/stylesheets/screen.css").should be_false
+      File.exists?(@project_dir + "/src/screen.scss").should(be true)
+      File.exists?(@project_dir + "/stylesheets/screen.css").should be false
 
       @guard.run_on_change(@project_dir + "/bad_src/screen.scss")
     end
@@ -178,8 +181,8 @@ describe Guard::Compass do
     end
 
     it "fails to build sass" do
-      File.exists?(@project_dir + "/bad_src/screen.scss").should(be_true)
-      File.exists?(@project_dir + "/stylesheets/screen.css").should be_false
+      File.exists?(@project_dir + "/bad_src/screen.scss").should(be true)
+      File.exists?(@project_dir + "/stylesheets/screen.css").should be false
 
       @guard.run_on_change(@project_dir + "/bad_src/screen.scss")
     end
